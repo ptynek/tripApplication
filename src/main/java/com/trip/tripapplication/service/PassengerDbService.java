@@ -24,4 +24,7 @@ public class PassengerDbService {
         return repository.save(passengers);
     }
 
+    public void deletePassenger(final Long id){
+        repository.deleteById(id);
+    }
 }

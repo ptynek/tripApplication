@@ -1,5 +1,6 @@
 package com.trip.tripapplication.domain.dto;
 
+import com.trip.tripapplication.domain.Cities;
 import lombok.Builder;
 import lombok.Getter;
 
@@ -10,8 +11,6 @@ public class RouteDto {
     private long lengthInMeters;
     private long travelTimeInSeconds;
     private long trafiicDelayInSeconds;
-    private double latFrom;
-    private double lonFrom;
-    private double latTo;
-    private double lonTo;
+    private Cities cityFrom;
+    private Cities cityTo;
 }

@@ -8,6 +8,10 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
+/*@NamedQuery(
+        name = "Cities.findByCity",
+        query = "FROM Cities WHERE city = :CITY"
+)*/
 @NoArgsConstructor
 @AllArgsConstructor
 @Data

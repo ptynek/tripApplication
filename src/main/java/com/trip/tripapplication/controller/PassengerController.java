@@ -46,4 +46,10 @@ public class PassengerController {
         service.savePassenger(passenger);
         return ResponseEntity.ok().build();
     }
+
+    @DeleteMapping(value = "{passengerId}")
+    public ResponseEntity<Void> deletePassenger(@PathVariable long passengerId){
+        service.deletePassenger(passengerId);
+        return ResponseEntity.ok().build();
+    }
 }

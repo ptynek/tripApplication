@@ -1,7 +1,9 @@
 package com.trip.tripapplication.repository;
 
 import com.trip.tripapplication.domain.Cities;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import javax.transaction.Transactional;
@@ -20,4 +22,7 @@ public interface CitiesRepository extends CrudRepository<Cities, Long> {
 
     @Override
     List<Cities> findAll();
+
+    @Query
+    Cities findByCity(@Param("CITY") String city);
 }

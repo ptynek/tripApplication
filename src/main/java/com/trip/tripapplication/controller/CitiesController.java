@@ -6,6 +6,7 @@ import com.trip.tripapplication.exceptions.CitiesException;
 import com.trip.tripapplication.mapper.CitiesMapper;
 import com.trip.tripapplication.service.CitiesDbService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.repository.query.Param;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -30,6 +31,11 @@ public class CitiesController {
     public ResponseEntity<CitiesDto> getCity(@PathVariable long cityId) throws CitiesException{
         return ResponseEntity.ok(mapper.mapToCitiesDto(service.getCityById(cityId)));
     }
+
+/*    @GetMapping(params = "{CITY}")
+    public ResponseEntity<CitiesDto> getCityByName(@Param("CITY") String cityName) throws CitiesException{
+        return ResponseEntity.ok(mapper.mapToCitiesDto(service.getCiyByName(cityName)));
+    }*/
 
     @PutMapping
     public ResponseEntity<CitiesDto> updateCity(@RequestBody CitiesDto citiesDto){

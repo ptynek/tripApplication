@@ -23,4 +23,8 @@ public class CitiesDbService {
     public Cities saveCity( final Cities cities){
         return repository.save(cities);
     }
+
+    public Cities getCiyByName(final String name){
+        return repository.findByCity(name);
+    }
 }

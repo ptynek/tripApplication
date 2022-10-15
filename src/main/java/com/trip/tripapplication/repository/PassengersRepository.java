@@ -20,4 +20,7 @@ public interface PassengersRepository extends CrudRepository<Passengers, Long> {
 
     @Override
     Passengers save(final Passengers passengers);
+
+    @Override
+    void deleteById(Long id);
 }
