@@ -11,5 +11,5 @@ public class PassengersDto {
 
     private long id;
     private String firstName;
-    private String lastname;
+    private String lastName;
 }

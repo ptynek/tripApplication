@@ -5,15 +5,13 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Entity(name = "PASSENGERS")
 public class Passengers {
 
     @Id
@@ -28,7 +26,7 @@ public class Passengers {
 
     @NotNull
     @Column(name = "LAST_NAME")
-    private String lastname;
+    private String lastName;
 
     @NotNull
     @Column(name = "PHONE_NUMBER")

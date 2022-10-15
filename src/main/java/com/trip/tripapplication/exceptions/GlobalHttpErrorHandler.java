@@ -13,4 +13,9 @@ public class GlobalHttpErrorHandler extends ResponseEntityExceptionHandler {
     public ResponseEntity<Object> cityNotFoundException(CitiesException citiesException){
         return new ResponseEntity<>("City with given id doesn't exist", HttpStatus.BAD_REQUEST);
     }
+
+    @ExceptionHandler(PassengersException.class)
+    public ResponseEntity<Object> passengerNotFoundException(PassengersException citiesException){
+        return new ResponseEntity<>("Passenger with given id doesn't exist", HttpStatus.BAD_REQUEST);
+    }
 }

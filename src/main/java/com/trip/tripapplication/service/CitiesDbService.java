@@ -7,11 +7,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-
 @Service
 @RequiredArgsConstructor
 public class CitiesDbService {
-
     private final CitiesRepository repository;
 
     public List<Cities> getAllCities(){

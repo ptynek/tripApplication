@@ -3,6 +3,7 @@ package com.trip.tripapplication.controller;
 import com.google.gson.Gson;
 import com.trip.tripapplication.domain.dto.CitiesDto;
 import org.hamcrest.Matchers;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +23,7 @@ class CitiesControllerTest {
     private MockMvc mockMvc;
 
     @Test
+    @DisplayName("Add city")
     void testAddCity() throws Exception{
         CitiesDto citiesDto = new CitiesDto("Wrocław", "Poland", 50.66857, 17.92253);
         Gson gson = new Gson();
@@ -36,6 +38,7 @@ class CitiesControllerTest {
     }
 
     @Test
+    @DisplayName("Get all cities")
     void testGetAllCities() throws Exception{
         mockMvc.perform(MockMvcRequestBuilders
                 .get("/v1/cities")
@@ -45,6 +48,7 @@ class CitiesControllerTest {
     }
 
     @Test
+    @DisplayName("Get city with specific id")
     void testGetCityWithSpecificId() throws Exception{
         mockMvc.perform(MockMvcRequestBuilders
                 .get("/v1/cities/1")

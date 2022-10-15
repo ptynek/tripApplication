@@ -5,6 +5,9 @@ import com.trip.tripapplication.domain.dto.CreatePassengerDto;
 import com.trip.tripapplication.domain.dto.PassengersDto;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 public class PassengersMapper {
 
@@ -12,7 +15,17 @@ public class PassengersMapper {
         return new PassengersDto(
                 passengers.getId(),
                 passengers.getFirstName(),
-                passengers.getLastname()
+                passengers.getLastName()
+        );
+    }
+
+    public CreatePassengerDto mapToCreatePassengerDto(final Passengers passengers){
+        return new CreatePassengerDto(
+                passengers.getId(),
+                passengers.getFirstName(),
+                passengers.getLastName(),
+                passengers.getPhoneNumber(),
+                passengers.getMail()
         );
     }
 
@@ -20,9 +33,15 @@ public class PassengersMapper {
         return new Passengers(
                 createPassengerDto.getId(),
                 createPassengerDto.getFirstName(),
-                createPassengerDto.getLastname(),
+                createPassengerDto.getLastName(),
                 createPassengerDto.getPhoneNumber(),
                 createPassengerDto.getMail()
         );
+    }
+
+    public List<PassengersDto> mapToPassengersDtoList(final List<Passengers> passengersList){
+        return passengersList.stream()
+                .map(this::mapToPassengersDto)
+                .collect(Collectors.toList());
     }
 }

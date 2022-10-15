@@ -1,7 +1,6 @@
 package com.trip.tripapplication.repository;
 
 import com.trip.tripapplication.domain.Passengers;
-import lombok.Builder;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
@@ -11,7 +10,7 @@ import java.util.Optional;
 
 @Transactional
 @Repository
-public interface PassengerRepository extends CrudRepository<Passengers, Long> {
+public interface PassengersRepository extends CrudRepository<Passengers, Long> {
 
     @Override
     Optional<Passengers> findById(Long id);
@@ -20,5 +19,5 @@ public interface PassengerRepository extends CrudRepository<Passengers, Long> {
     List<Passengers> findAll();
 
     @Override
-    Passengers save(Passengers passengers);
+    Passengers save(final Passengers passengers);
 }
