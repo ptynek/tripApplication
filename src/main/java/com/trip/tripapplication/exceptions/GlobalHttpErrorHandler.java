@@ -18,4 +18,19 @@ public class GlobalHttpErrorHandler extends ResponseEntityExceptionHandler {
     public ResponseEntity<Object> passengerNotFoundException(PassengersException citiesException){
         return new ResponseEntity<>("Passenger with given id doesn't exist", HttpStatus.BAD_REQUEST);
     }
+
+    @ExceptionHandler(WeatherCodeException.class)
+    public ResponseEntity<Object> passengerNotFoundException(WeatherCodeException weatherCodeException){
+        return new ResponseEntity<>("Weather code with given id doesn't exist", HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(PassengerNotLoggedIn.class)
+    public ResponseEntity<Object> passengerNotLoggedIn(PassengerNotLoggedIn passengerNotLoggedIn){
+        return new ResponseEntity<>("Please log in passenger!", HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(PassengerNotActive.class)
+    public ResponseEntity<Object> passengerNotActive(PassengerNotActive passengerNotActive){
+        return new ResponseEntity<>("Passenger is not active!", HttpStatus.BAD_REQUEST);
+    }
 }

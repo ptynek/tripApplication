@@ -24,5 +24,5 @@ public interface CitiesRepository extends CrudRepository<Cities, Long> {
     List<Cities> findAll();
 
     @Query
-    Cities findByCity(@Param("CITY") String city);
+    List<Cities> findByCity(@Param("CITY") String city);
 }

@@ -32,10 +32,10 @@ public class CitiesController {
         return ResponseEntity.ok(mapper.mapToCitiesDto(service.getCityById(cityId)));
     }
 
-/*    @GetMapping(params = "{CITY}")
-    public ResponseEntity<CitiesDto> getCityByName(@Param("CITY") String cityName) throws CitiesException{
-        return ResponseEntity.ok(mapper.mapToCitiesDto(service.getCiyByName(cityName)));
-    }*/
+    @GetMapping(value = "/name")
+    public ResponseEntity<List<CitiesDto>> getCityByName(@RequestParam("CITY") String cityName){
+        return ResponseEntity.ok(mapper.mapToCitiesDtoList(service.getCiyByName(cityName)));
+    }
 
     @PutMapping
     public ResponseEntity<CitiesDto> updateCity(@RequestBody CitiesDto citiesDto){
@@ -47,7 +47,14 @@ public class CitiesController {
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Void> addCity(@RequestBody CitiesDto citiesDto){
         Cities cities = mapper.mapToCities(citiesDto);
+        cities.setActive(true);
         service.saveCity(cities);
+        return ResponseEntity.ok().build();
+    }
+
+    @DeleteMapping
+    public ResponseEntity<Void> deleteCity(@PathVariable long cityId) throws CitiesException{
+        service.deleteCity(cityId);
         return ResponseEntity.ok().build();
     }
 }

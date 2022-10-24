@@ -8,10 +8,6 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
-/*@NamedQuery(
-        name = "Cities.findByCity",
-        query = "FROM Cities WHERE city = :CITY"
-)*/
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
@@ -40,4 +36,14 @@ public class Cities {
     @Column(name = "LONGITUDE")
     private double longitude;
 
+    @Column(name = "ACTIVE")
+    public boolean active;
+
+    public Cities(long id, String city, String country, double latitude, double longitude) {
+        this.id = id;
+        this.city = city;
+        this.country = country;
+        this.latitude = latitude;
+        this.longitude = longitude;
+    }
 }

@@ -14,6 +14,7 @@ public class CreatePassengerDto {
     private String lastName;
     private String phoneNumber;
     private String mail;
+    private boolean active;
 
     public CreatePassengerDto(String firstName, String lastName, String phoneNumber, String mail) {
         this.firstName = firstName;

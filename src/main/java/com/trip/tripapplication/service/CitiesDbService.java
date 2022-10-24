@@ -24,7 +24,13 @@ public class CitiesDbService {
         return repository.save(cities);
     }
 
-    public Cities getCiyByName(final String name){
+    public List<Cities> getCiyByName(final String name){
         return repository.findByCity(name);
+    }
+
+    public void deleteCity(final Long id) throws  CitiesException{
+        Cities city = repository.findById(id).orElseThrow(CitiesException::new);
+        city.setActive(false);
+        repository.save(city);
     }
 }

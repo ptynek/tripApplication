@@ -29,7 +29,8 @@ public class Weather {
     @Column(name = "WIND_SPEED")
     private double windspeed;
 
-    @Column(name = "WEATHER_CODE")
+
+    @Column(name = "WEATHERCODE")
     private int weathercode;
 
 }

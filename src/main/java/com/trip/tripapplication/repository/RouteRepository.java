@@ -1,6 +1,6 @@
 package com.trip.tripapplication.repository;
 
-import com.trip.tripapplication.domain.Passengers;
+import com.trip.tripapplication.domain.Route;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
@@ -10,16 +10,14 @@ import java.util.Optional;
 
 @Transactional
 @Repository
-public interface PassengersRepository extends CrudRepository<Passengers, Long> {
+public interface RouteRepository extends CrudRepository<Route, Long> {
 
     @Override
-    Optional<Passengers> findById(Long id);
+    Optional<Route> findById(final Long id);
 
     @Override
-    List<Passengers> findAll();
+    Route save(final Route route);
 
     @Override
-    Passengers save(final Passengers passengers);
-
-
+    List<Route> findAll();
 }

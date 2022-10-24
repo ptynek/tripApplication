@@ -36,4 +36,35 @@ public class Passengers {
     @Column(name = "MAIL")
     private String mail;
 
+    @NotNull
+    @Column(name = "ACTIVE")
+    private boolean active;
+
+    @NotNull
+    private boolean loggedIn;
+
+    public boolean isLoggedIn() {
+        return loggedIn;
+    }
+
+    public void setLoggedIn(boolean loggedIn) {
+        this.loggedIn = loggedIn;
+    }
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
+    }
+
+    public Passengers(long id, String firstName, String lastName, String phoneNumber, String mail, boolean active) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.phoneNumber = phoneNumber;
+        this.mail = mail;
+        this.active = active;
+    }
 }

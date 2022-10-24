@@ -2,6 +2,7 @@ package com.trip.tripapplication.client.tomtom;
 
 import com.trip.tripapplication.client.tomtom.dto.TomTomMain;
 import com.trip.tripapplication.domain.Cities;
+import com.trip.tripapplication.domain.dto.CitiesDto;
 import com.trip.tripapplication.domain.dto.RouteDto;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -25,7 +26,7 @@ public class TomTomClient {
     private double latTo;
     private double lonTo;
 
-    public RouteDto getRoute(Cities cityFrom, Cities cityTo){
+    public RouteDto getRoute(CitiesDto cityFrom, CitiesDto cityTo){
         latFrom = cityFrom.getLatitude();
         lonFrom = cityFrom.getLongitude();
         latTo = cityTo.getLatitude();

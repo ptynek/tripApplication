@@ -1,6 +1,8 @@
 package com.trip.tripapplication.controller;
 
 import com.trip.tripapplication.client.weather.WeatherClient;
+import com.trip.tripapplication.domain.dto.CitiesDto;
+import com.trip.tripapplication.domain.dto.RouteDto;
 import com.trip.tripapplication.domain.dto.WeatherDto;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -16,7 +18,7 @@ public class WeatherController {
     private final WeatherClient weatherClient;
 
     @GetMapping
-    public WeatherDto getWeather(){
-        return weatherClient.getCurrentWeather(51.11326, 17.02928);
+    public WeatherDto getWeather(CitiesDto citiesDto){
+        return weatherClient.getCurrentWeather(citiesDto.getLatitude(), citiesDto.getLongitude());
     }
 }

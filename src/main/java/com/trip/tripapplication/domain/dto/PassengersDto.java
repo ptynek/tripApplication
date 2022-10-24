@@ -12,4 +12,13 @@ public class PassengersDto {
     private long id;
     private String firstName;
     private String lastName;
+    private boolean active;
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
+    }
 }

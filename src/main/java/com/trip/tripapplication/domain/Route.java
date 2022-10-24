@@ -31,8 +31,22 @@ public class Route {
     @OneToOne
     @JoinColumn(name = "city_from_id")
     private Cities cityFrom;
+
     @OneToOne
     @JoinColumn(name = "city_to_id")
     private Cities cityTo;
 
+    @OneToOne
+    @JoinColumn(name = "passengers_id")
+    private Passengers passengers;
+
+
+    public Route(long id, long lengthInMeters, long travelTimeInSeconds, long trafiicDelayInSeconds, Cities cityFrom, Cities cityTo) {
+        this.id = id;
+        this.lengthInMeters = lengthInMeters;
+        this.travelTimeInSeconds = travelTimeInSeconds;
+        this.trafiicDelayInSeconds = trafiicDelayInSeconds;
+        this.cityFrom = cityFrom;
+        this.cityTo = cityTo;
+    }
 }

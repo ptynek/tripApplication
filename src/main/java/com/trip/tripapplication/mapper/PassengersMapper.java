@@ -15,7 +15,8 @@ public class PassengersMapper {
         return new PassengersDto(
                 passengers.getId(),
                 passengers.getFirstName(),
-                passengers.getLastName()
+                passengers.getLastName(),
+                passengers.isActive()
         );
     }
 
@@ -25,7 +26,8 @@ public class PassengersMapper {
                 passengers.getFirstName(),
                 passengers.getLastName(),
                 passengers.getPhoneNumber(),
-                passengers.getMail()
+                passengers.getMail(),
+                passengers.isActive()
         );
     }
 
@@ -35,7 +37,8 @@ public class PassengersMapper {
                 createPassengerDto.getFirstName(),
                 createPassengerDto.getLastName(),
                 createPassengerDto.getPhoneNumber(),
-                createPassengerDto.getMail()
+                createPassengerDto.getMail(),
+                createPassengerDto.isActive()
         );
     }
 
