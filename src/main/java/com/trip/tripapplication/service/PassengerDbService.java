@@ -46,4 +46,5 @@ public class PassengerDbService {
         passenger.setLoggedIn(true);
         repository.save(passenger);
     }
+
 }

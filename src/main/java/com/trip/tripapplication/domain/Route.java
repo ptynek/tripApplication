@@ -40,6 +40,10 @@ public class Route {
     @JoinColumn(name = "passengers_id")
     private Passengers passengers;
 
+    @OneToOne
+    @JoinColumn(name = "weather_id")
+    private Weather weather;
+
 
     public Route(long id, long lengthInMeters, long travelTimeInSeconds, long trafiicDelayInSeconds, Cities cityFrom, Cities cityTo) {
         this.id = id;

@@ -2,6 +2,7 @@ package com.trip.tripapplication.service;
 
 import com.trip.tripapplication.domain.Cities;
 import com.trip.tripapplication.exceptions.CitiesException;
+import com.trip.tripapplication.exceptions.CityNotActive;
 import com.trip.tripapplication.repository.CitiesRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -32,5 +33,13 @@ public class CitiesDbService {
         Cities city = repository.findById(id).orElseThrow(CitiesException::new);
         city.setActive(false);
         repository.save(city);
+    }
+
+    public boolean checkIfCityIsActive(final Cities cityFrom, Cities cityTo) {
+        if (cityFrom.isActive() && cityTo.isActive()){
+            return true;
+        } else {
+            return false;
+        }
     }
 }

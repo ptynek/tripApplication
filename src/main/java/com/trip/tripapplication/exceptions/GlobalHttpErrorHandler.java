@@ -1,5 +1,6 @@
 package com.trip.tripapplication.exceptions;
 
+import com.trip.tripapplication.domain.Cities;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -32,5 +33,10 @@ public class GlobalHttpErrorHandler extends ResponseEntityExceptionHandler {
     @ExceptionHandler(PassengerNotActive.class)
     public ResponseEntity<Object> passengerNotActive(PassengerNotActive passengerNotActive){
         return new ResponseEntity<>("Passenger is not active!", HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(CityNotActive.class)
+    public ResponseEntity<Object> cityNotActive(CityNotActive cityNotActive){
+        return new ResponseEntity<>("City is not active anymore", HttpStatus.BAD_REQUEST);
     }
 }

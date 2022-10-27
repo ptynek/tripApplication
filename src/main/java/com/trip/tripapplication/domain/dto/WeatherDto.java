@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class WeatherDto {
 
-    private Cities city;
+    private long id;
     private double temperature;
     private double windspeed;
     private int weathercode;

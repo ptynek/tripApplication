@@ -12,6 +12,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -36,16 +37,17 @@ public class RouteDbService {
 
     public boolean checkIfIsLoggedIn() throws PassengerNotLoggedIn, PassengerNotActive {
         List<Passengers> passengersList = passengersRepository.findAll();
+        List<Passengers> passengerLoggedIn = new ArrayList<>();
         try{
             passengersList.stream()
                     .filter(passengers -> passengers.isLoggedIn())
-                    .collect(Collectors.toList());
+                    .forEach(passengers -> passengerLoggedIn.add(passengers));
         } catch (NullPointerException nullPointerException){
             log.info(String.valueOf(nullPointerException));
         } finally {
-            if (passengersList.size() != 0 && passengersList.get(0).isLoggedIn()) {
-                if (passengersList.get(0).isActive()) {
-                    passenger = passengersList.get(0);
+            if (passengerLoggedIn.size() != 0 && passengerLoggedIn.get(0).isLoggedIn()) {
+                if (passengerLoggedIn.get(0).isActive()) {
+                    passenger = passengerLoggedIn.get(0);
                     return true;
                 } else {
                     throw new PassengerNotActive();
