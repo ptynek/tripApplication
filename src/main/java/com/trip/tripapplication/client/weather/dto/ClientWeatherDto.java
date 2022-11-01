@@ -1,19 +1,19 @@
-package com.trip.tripapplication.domain.dto;
+package com.trip.tripapplication.client.weather.dto;
 
-import com.trip.tripapplication.domain.Cities;
+import com.trip.tripapplication.domain.dto.WeatherCodeDto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-@Builder
 @Getter
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class WeatherDto {
+public class ClientWeatherDto {
 
     private long id;
     private double temperature;
     private double windspeed;
-    private WeatherCodeDto weatherCodeDto;
+    private int weatherCode;
 }

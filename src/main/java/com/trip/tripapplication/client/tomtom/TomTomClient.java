@@ -1,7 +1,6 @@
 package com.trip.tripapplication.client.tomtom;
 
 import com.trip.tripapplication.client.tomtom.dto.TomTomMain;
-import com.trip.tripapplication.domain.Cities;
 import com.trip.tripapplication.domain.dto.CitiesDto;
 import com.trip.tripapplication.domain.dto.RouteDto;
 import lombok.RequiredArgsConstructor;

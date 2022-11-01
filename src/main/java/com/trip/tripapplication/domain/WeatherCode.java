@@ -24,4 +24,9 @@ public class WeatherCode {
 
     @Column(name = "DESCRIPTION")
     private String description;
+
+    public WeatherCode(int weatherCode, String description) {
+        this.weatherCode = weatherCode;
+        this.description = description;
+    }
 }

@@ -10,14 +10,14 @@ import org.springframework.stereotype.Service;
 @AllArgsConstructor
 public class WeatherMapper {
 
-    private final WeatherCodeRepository weatherCodeRepository;
+    private final WeatherCodeMapper weatherCodeMapper;
 
     public Weather mapToWeather(final WeatherDto weatherDto){
         return new Weather(
                 weatherDto.getId(),
                 weatherDto.getTemperature(),
                 weatherDto.getWindspeed(),
-                weatherDto.getWeathercode()
+                weatherCodeMapper.mapToWeatherCode(weatherDto.getWeatherCodeDto())
         );
     }
 
@@ -26,7 +26,7 @@ public class WeatherMapper {
                 weather.getId(),
                 weather.getTemperature(),
                 weather.getWindspeed(),
-                weather.getWeathercode()
+                weatherCodeMapper.mapToWeatherCodeDto(weather.getWeatherCode())
         );
     }
 }

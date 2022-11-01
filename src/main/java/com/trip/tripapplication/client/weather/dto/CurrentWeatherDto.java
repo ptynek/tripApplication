@@ -6,5 +6,5 @@ import lombok.Getter;
 @Getter
 public class CurrentWeatherDto {
 
-    private WeatherDto current_weather;
+    private ClientWeatherDto current_weather;
 }

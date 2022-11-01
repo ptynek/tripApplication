@@ -15,7 +15,6 @@ import java.util.stream.Collectors;
 @AllArgsConstructor
 public class RouteMapper {
     private CitiesMapper citiesMapper;
-    private WeatherCodeMapper weatherCodeMapper;
 
     public Route mapToRoute(final RouteDto routeDto) {
         return new Route(

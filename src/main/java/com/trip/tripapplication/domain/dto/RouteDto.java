@@ -7,6 +7,8 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
@@ -20,7 +22,7 @@ public class RouteDto {
     private CitiesDto cityFrom;
     private CitiesDto cityTo;
 
-    private PassengersDto passengersDto;
+    private List<PassengersDto> passengersDto;
 
     public RouteDto(long id, long lengthInMeters, long travelTimeInSeconds, long trafiicDelayInSeconds, CitiesDto cityFrom, CitiesDto cityTo) {
         this.id = id;
