@@ -1,10 +1,9 @@
 package com.trip.tripapplication.domain.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
-@Data
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 public class PassengersDto {
@@ -12,13 +11,14 @@ public class PassengersDto {
     private long id;
     private String firstName;
     private String lastName;
+    private String phoneNumber;
+    private String mail;
     private boolean active;
+    private boolean loggedIn;
 
     public boolean isActive() {
         return active;
     }
 
-    public void setActive(boolean active) {
-        this.active = active;
-    }
+
 }

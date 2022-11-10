@@ -19,14 +19,19 @@ import com.trip.tripapplication.service.CitiesDbService;
 import com.trip.tripapplication.service.RouteDbService;
 import com.trip.tripapplication.service.WeatherDbService;
 import lombok.RequiredArgsConstructor;
+import lombok.Setter;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @RestController
 @RequestMapping("/v1/route")
 @RequiredArgsConstructor
+@Slf4j
 public class RouteController {
 
     private final TomTomClient tomTomClient;
@@ -53,9 +58,11 @@ public class RouteController {
         return routeMapper.mapToRouteDtoList(routes);
     }
 
-    @PostMapping(params = {"idCityFrom", "idCityTo"})
+    @PostMapping(params = {"idCityFrom", "idCityTo", "dateTime"})
     public ResponseEntity<RouteDto> addRoute(@RequestParam(name = "idCityFrom") long idCityFrom,
-                                             @RequestParam(name = "idCityTo") long idCityTo) throws CitiesException, PassengerNotLoggedIn, PassengerNotActive, CityNotActive {
+                                             @RequestParam(name = "idCityTo") long idCityTo,
+                                             @RequestParam(name = "dateTime", required = false)
+                                             @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime dateTime) throws CitiesException, PassengerNotLoggedIn, PassengerNotActive, CityNotActive {
 
         Cities cityFrom = citiesDbService.getCityById(idCityFrom);
         Cities cityTo = citiesDbService.getCityById(idCityTo);
@@ -67,7 +74,8 @@ public class RouteController {
             if (routeDbService.checkIfIsLoggedIn()) {
                 Route route = routeMapper.mapToRoute(tomTomClient.getRoute(cityFromDto, cityToDto));
                 route.setWeather(weatherDbService.getWeatherInDestinationCity(cityToDto));
-                route.setPassengers(routeDbService.passenger);
+                route.setPassengers(routeDbService.getPassenger());
+                route.setDateOfTrip(dateTime);
                 routeDbService.saveRoute(route);
                 return ResponseEntity.ok().build();
             } else {

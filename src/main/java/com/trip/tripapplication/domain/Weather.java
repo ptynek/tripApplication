@@ -25,7 +25,6 @@ public class Weather {
     @Column(name = "WIND_SPEED")
     private double windspeed;
 
-
     @OneToOne
     @JoinColumn(name = "weather_code_id")
     private WeatherCode weatherCode;

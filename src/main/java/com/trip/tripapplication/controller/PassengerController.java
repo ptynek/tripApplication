@@ -1,7 +1,6 @@
 package com.trip.tripapplication.controller;
 
 import com.trip.tripapplication.domain.Passengers;
-import com.trip.tripapplication.domain.dto.CreatePassengerDto;
 import com.trip.tripapplication.domain.dto.PassengersDto;
 import com.trip.tripapplication.exceptions.PassengersException;
 import com.trip.tripapplication.mapper.PassengersMapper;
@@ -36,15 +35,15 @@ public class PassengerController {
     }
 
     @PutMapping
-    public ResponseEntity<CreatePassengerDto> updatePassenger(@RequestBody CreatePassengerDto createPassengerDto){
-        Passengers passenger = mapper.mapToPassengers(createPassengerDto);
+    public ResponseEntity<PassengersDto> updatePassenger(@RequestBody PassengersDto passengerDto){
+        Passengers passenger = mapper.mapToPassengers(passengerDto);
         Passengers savedPassenger = service.savePassenger(passenger);
-        return ResponseEntity.ok(mapper.mapToCreatePassengerDto(savedPassenger));
+        return ResponseEntity.ok(mapper.mapToPassengersDto(savedPassenger));
     }
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Void> createPassenger(@RequestBody CreatePassengerDto createPassengerDto){
-        Passengers passenger = mapper.mapToPassengers(createPassengerDto);
+    public ResponseEntity<Void> createPassenger(@RequestBody PassengersDto passengerDto){
+        Passengers passenger = mapper.mapToPassengers(passengerDto);
         passenger.setActive(true);
         log.info(String.valueOf("Creating passenger: " + passenger));
         service.savePassenger(passenger);

@@ -5,11 +5,13 @@ import com.trip.tripapplication.exceptions.CitiesException;
 import com.trip.tripapplication.exceptions.CityNotActive;
 import com.trip.tripapplication.repository.CitiesRepository;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class CitiesDbService {
     private final CitiesRepository repository;
 
@@ -29,9 +31,10 @@ public class CitiesDbService {
         return repository.findByCity(name);
     }
 
-    public void deleteCity(final Long id) throws  CitiesException{
+    public void deleteCity(final long id) throws  CitiesException{
         Cities city = repository.findById(id).orElseThrow(CitiesException::new);
         city.setActive(false);
+        log.info("Deactivate: " + city);
         repository.save(city);
     }
 

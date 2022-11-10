@@ -5,13 +5,16 @@ import com.trip.tripapplication.domain.WeatherCode;
 import com.trip.tripapplication.domain.dto.WeatherDto;
 import com.trip.tripapplication.mapper.WeatherCodeMapper;
 import com.trip.tripapplication.repository.WeatherCodeRepository;
+import com.trip.tripapplication.service.WeatherCodeDbService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
 @RequiredArgsConstructor
 @Component
+@Slf4j
 public class WeatherClient {
 
     private final RestTemplate restTemplate;
@@ -28,13 +31,12 @@ public class WeatherClient {
                 endpoint + "latitude={lat}&longitude={lon}&current_weather=true", CurrentWeatherDto.class, lat, lon
         );
 
-        WeatherCode weatherCodeDto = weatherCodeRepository.findByWeatherCode(current_weather.getCurrent_weather().getWeatherCode());
-
+        WeatherCode weatherCode = weatherCodeRepository.findByWeatherCode(current_weather.getCurrent_weather().getWeathercode());
 
         return WeatherDto.builder()
                 .temperature(current_weather.getCurrent_weather().getTemperature())
                 .windspeed(current_weather.getCurrent_weather().getWindspeed())
-                .weatherCodeDto(weatherCodeMapper.mapToWeatherCodeDto(weatherCodeDto))
+                .weatherCodeDto(weatherCodeMapper.mapToWeatherCodeDto(weatherCode))
                 .build();
     }
 

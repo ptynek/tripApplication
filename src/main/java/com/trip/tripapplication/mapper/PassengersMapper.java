@@ -1,7 +1,6 @@
 package com.trip.tripapplication.mapper;
 
 import com.trip.tripapplication.domain.Passengers;
-import com.trip.tripapplication.domain.dto.CreatePassengerDto;
 import com.trip.tripapplication.domain.dto.PassengersDto;
 import org.springframework.stereotype.Service;
 
@@ -16,29 +15,22 @@ public class PassengersMapper {
                 passengers.getId(),
                 passengers.getFirstName(),
                 passengers.getLastName(),
-                passengers.isActive()
-        );
-    }
-
-    public CreatePassengerDto mapToCreatePassengerDto(final Passengers passengers){
-        return new CreatePassengerDto(
-                passengers.getId(),
-                passengers.getFirstName(),
-                passengers.getLastName(),
                 passengers.getPhoneNumber(),
                 passengers.getMail(),
-                passengers.isActive()
+                passengers.isActive(),
+                passengers.isLoggedIn()
         );
     }
 
-    public Passengers mapToPassengers(final CreatePassengerDto createPassengerDto){
+    public Passengers mapToPassengers(final PassengersDto passengersDto){
         return new Passengers(
-                createPassengerDto.getId(),
-                createPassengerDto.getFirstName(),
-                createPassengerDto.getLastName(),
-                createPassengerDto.getPhoneNumber(),
-                createPassengerDto.getMail(),
-                createPassengerDto.isActive()
+                passengersDto.getId(),
+                passengersDto.getFirstName(),
+                passengersDto.getLastName(),
+                passengersDto.getPhoneNumber(),
+                passengersDto.getMail(),
+                passengersDto.isActive(),
+                passengersDto.isLoggedIn()
         );
     }
 

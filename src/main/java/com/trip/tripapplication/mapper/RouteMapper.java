@@ -1,10 +1,12 @@
 package com.trip.tripapplication.mapper;
 
 import com.trip.tripapplication.domain.Route;
+import com.trip.tripapplication.domain.dto.PassengersDto;
 import com.trip.tripapplication.domain.dto.RouteDto;
 import com.trip.tripapplication.exceptions.CitiesException;
 import com.trip.tripapplication.service.CitiesDbService;
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,15 +15,18 @@ import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
+@Slf4j
 public class RouteMapper {
     private CitiesMapper citiesMapper;
+    private PassengersMapper passengersMapper;
+    private WeatherMapper weatherMapper;
 
-    public Route mapToRoute(final RouteDto routeDto) {
+    public Route mapToRoute(final RouteDto routeDto){
         return new Route(
                 routeDto.getId(),
                 routeDto.getLengthInMeters(),
                 routeDto.getTravelTimeInSeconds(),
-                routeDto.getTrafiicDelayInSeconds(),
+                routeDto.getTraficDelayInSeconds(),
                 citiesMapper.mapToCities(routeDto.getCityFrom()),
                 citiesMapper.mapToCities(routeDto.getCityTo())
         );
@@ -33,7 +38,10 @@ public class RouteMapper {
                 route.getTravelTimeInSeconds(),
                 route.getTrafiicDelayInSeconds(),
                 citiesMapper.mapToCitiesDto(route.getCityFrom()),
-                citiesMapper.mapToCitiesDto(route.getCityTo())
+                citiesMapper.mapToCitiesDto(route.getCityTo()),
+                passengersMapper.mapToPassengersDto(route.getPassengers()),
+                weatherMapper.mapToWeatherDto(route.getWeather()),
+                route.getDateOfTrip()
         );
     }
 

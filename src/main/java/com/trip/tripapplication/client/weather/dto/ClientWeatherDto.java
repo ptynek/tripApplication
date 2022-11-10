@@ -15,5 +15,5 @@ public class ClientWeatherDto {
     private long id;
     private double temperature;
     private double windspeed;
-    private int weatherCode;
+    private int weathercode;
 }

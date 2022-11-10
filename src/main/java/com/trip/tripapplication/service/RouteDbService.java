@@ -8,6 +8,7 @@ import com.trip.tripapplication.exceptions.PassengerNotLoggedIn;
 import com.trip.tripapplication.exceptions.PassengersException;
 import com.trip.tripapplication.repository.PassengersRepository;
 import com.trip.tripapplication.repository.RouteRepository;
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -18,6 +19,7 @@ import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
+@Getter
 @Slf4j
 public class RouteDbService {
 
@@ -25,7 +27,8 @@ public class RouteDbService {
 
     private final RouteRepository repository;
 
-    public static Passengers passenger;
+    public Passengers passenger;
+
 
     public List<Route> getAllRoutes(){
         return repository.findAll();
@@ -40,8 +43,8 @@ public class RouteDbService {
         List<Passengers> passengerLoggedIn = new ArrayList<>();
         try{
             passengersList.stream()
-                    .filter(passengers -> passengers.isLoggedIn())
-                    .forEach(passengers -> passengerLoggedIn.add(passengers));
+                    .filter(Passengers::isLoggedIn)
+                    .forEach(passengerLoggedIn::add);
         } catch (NullPointerException nullPointerException){
             log.info(String.valueOf(nullPointerException));
         } finally {

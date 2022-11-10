@@ -1,11 +1,13 @@
 package com.trip.tripapplication.domain;
 
+import com.trip.tripapplication.mapper.PassengersMapper;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.time.LocalDateTime;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -44,6 +46,20 @@ public class Route {
     @JoinColumn(name = "weather_id")
     private Weather weather;
 
+    @Column(name = "DATE")
+    private LocalDateTime dateOfTrip;
+
+
+    public Route(long id, long lengthInMeters, long travelTimeInSeconds, long trafiicDelayInSeconds, Cities cityFrom, Cities cityTo, Passengers passengers, LocalDateTime dateOfTrip) {
+        this.id = id;
+        this.lengthInMeters = lengthInMeters;
+        this.travelTimeInSeconds = travelTimeInSeconds;
+        this.trafiicDelayInSeconds = trafiicDelayInSeconds;
+        this.cityFrom = cityFrom;
+        this.cityTo = cityTo;
+        this.passengers = passengers;
+        this.dateOfTrip = dateOfTrip;
+    }
 
     public Route(long id, long lengthInMeters, long travelTimeInSeconds, long trafiicDelayInSeconds, Cities cityFrom, Cities cityTo) {
         this.id = id;

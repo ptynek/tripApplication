@@ -17,7 +17,8 @@ public class CitiesMapper {
                 citiesDto.getCity(),
                 citiesDto.getCountry(),
                 citiesDto.getLatitude(),
-                citiesDto.getLongitude()
+                citiesDto.getLongitude(),
+                citiesDto.isActive()
         );
     }
 
@@ -27,7 +28,8 @@ public class CitiesMapper {
                 cities.getCity(),
                 cities.getCountry(),
                 cities.getLatitude(),
-                cities.getLongitude()
+                cities.getLongitude(),
+                cities.isActive()
         );
     }
 

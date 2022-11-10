@@ -38,7 +38,7 @@ public class TomTomClient {
         return RouteDto.builder()
                 .travelTimeInSeconds(routes.getRoutes().get(0).getSummary().getTravelTimeInSeconds())
                 .lengthInMeters(routes.getRoutes().get(0).getSummary().getLengthInMeters())
-                .trafiicDelayInSeconds(routes.getRoutes().get(0).getSummary().getTrafiicDelayInSeconds())
+                .traficDelayInSeconds(routes.getRoutes().get(0).getSummary().getTrafiicDelayInSeconds())
                 .cityFrom(cityFrom)
                 .cityTo(cityTo)
                 .build();

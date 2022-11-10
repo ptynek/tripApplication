@@ -37,7 +37,7 @@ public class Cities {
     private double longitude;
 
     @Column(name = "ACTIVE")
-    public boolean active;
+    private boolean active;
 
     public Cities(long id, String city, String country, double latitude, double longitude) {
         this.id = id;
@@ -45,5 +45,13 @@ public class Cities {
         this.country = country;
         this.latitude = latitude;
         this.longitude = longitude;
+    }
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
     }
 }

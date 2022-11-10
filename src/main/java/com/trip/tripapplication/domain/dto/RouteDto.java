@@ -2,14 +2,13 @@ package com.trip.tripapplication.domain.dto;
 
 import com.trip.tripapplication.domain.Cities;
 import com.trip.tripapplication.domain.Passengers;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
@@ -18,19 +17,18 @@ public class RouteDto {
     private long id;
     private long lengthInMeters;
     private long travelTimeInSeconds;
-    private long trafiicDelayInSeconds;
+    private long traficDelayInSeconds;
     private CitiesDto cityFrom;
     private CitiesDto cityTo;
+    private PassengersDto passengersDto;
+    private WeatherDto weatherDto;
+    private LocalDateTime dateOfTrip;
 
-    private List<PassengersDto> passengersDto;
-
-    public RouteDto(long id, long lengthInMeters, long travelTimeInSeconds, long trafiicDelayInSeconds, CitiesDto cityFrom, CitiesDto cityTo) {
-        this.id = id;
+    public RouteDto(long lengthInMeters, long travelTimeInSeconds, long traficDelayInSeconds, CitiesDto cityFrom, CitiesDto cityTo) {
         this.lengthInMeters = lengthInMeters;
         this.travelTimeInSeconds = travelTimeInSeconds;
-        this.trafiicDelayInSeconds = trafiicDelayInSeconds;
+        this.traficDelayInSeconds = traficDelayInSeconds;
         this.cityFrom = cityFrom;
         this.cityTo = cityTo;
     }
-
 }

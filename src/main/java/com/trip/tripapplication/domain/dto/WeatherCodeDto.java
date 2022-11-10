@@ -14,4 +14,9 @@ public class WeatherCodeDto {
     private long id;
     private int weatherCode;
     private String description;
+
+    public WeatherCodeDto(int weatherCode, String description) {
+        this.weatherCode = weatherCode;
+        this.description = description;
+    }
 }

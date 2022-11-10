@@ -31,5 +31,11 @@ public class WeatherCodeController {
         return ResponseEntity.ok(mapper.mapToWeatherCodeDto(service.getWeatherCodeByCode(weatherCode)));
     }
 
+    @PostMapping
+    public ResponseEntity<Void> addWeatherCode(@RequestBody WeatherCodeDto weatherCodeDto){
+        WeatherCode weatherCode = mapper.mapToWeatherCode(weatherCodeDto);
+        service.saveWeatherCode(weatherCode);
+        return ResponseEntity.ok().build();
+    }
 
 }

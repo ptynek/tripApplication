@@ -6,6 +6,7 @@ import com.trip.tripapplication.exceptions.CitiesException;
 import com.trip.tripapplication.mapper.CitiesMapper;
 import com.trip.tripapplication.service.CitiesDbService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.repository.query.Param;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -16,6 +17,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/v1/cities")
 @RequiredArgsConstructor
+@Slf4j
 public class CitiesController {
 
     private final CitiesDbService service;
@@ -44,6 +46,7 @@ public class CitiesController {
         return ResponseEntity.ok(mapper.mapToCitiesDto(savedCity));
     }
 
+
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Void> addCity(@RequestBody CitiesDto citiesDto){
         Cities cities = mapper.mapToCities(citiesDto);
@@ -52,7 +55,7 @@ public class CitiesController {
         return ResponseEntity.ok().build();
     }
 
-    @DeleteMapping
+    @DeleteMapping(value = "{cityId}")
     public ResponseEntity<Void> deleteCity(@PathVariable long cityId) throws CitiesException{
         service.deleteCity(cityId);
         return ResponseEntity.ok().build();

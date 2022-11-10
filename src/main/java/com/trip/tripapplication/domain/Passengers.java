@@ -1,16 +1,16 @@
 package com.trip.tripapplication.domain;
 
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
-@Data
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 @Entity(name = "PASSENGERS")
 public class Passengers {
 
@@ -41,6 +41,7 @@ public class Passengers {
     private boolean active;
 
     @NotNull
+    @Column(name = "LOGGED_IN")
     private boolean loggedIn;
 
     public boolean isLoggedIn() {
@@ -67,4 +68,5 @@ public class Passengers {
         this.mail = mail;
         this.active = active;
     }
+
 }

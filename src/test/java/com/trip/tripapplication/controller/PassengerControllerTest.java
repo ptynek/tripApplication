@@ -2,7 +2,7 @@ package com.trip.tripapplication.controller;
 
 import com.google.gson.Gson;
 import com.trip.tripapplication.domain.Passengers;
-import com.trip.tripapplication.domain.dto.CreatePassengerDto;
+import com.trip.tripapplication.domain.dto.PassengersDto;
 import com.trip.tripapplication.mapper.PassengersMapper;
 import com.trip.tripapplication.service.PassengerDbService;
 import org.hamcrest.Matchers;
@@ -16,12 +16,9 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 @SpringBootTest
 @AutoConfigureMockMvc
 class PassengerControllerTest {
-/*
 
     @Autowired
     private MockMvc mockMvc;
@@ -35,11 +32,14 @@ class PassengerControllerTest {
     @Test
     @DisplayName("Add passenger")
     void testAddPassenger() throws Exception{
-        CreatePassengerDto passenger = new CreatePassengerDto(
-                "John", "Smith", "112233445", "john.smith@mail.com"
+        Passengers passengers =  new Passengers(
+                1L, "Jan", "Nowak",
+                "333222111", "mail@o2.pl", true, true
         );
+
+        PassengersDto passengersDto = mapper.mapToPassengersDto(passengers);
         Gson gson = new Gson();
-        String jsonContent = gson.toJson(passenger);
+        String jsonContent = gson.toJson(passengersDto);
         System.out.println(jsonContent);
 
         mockMvc
@@ -52,51 +52,16 @@ class PassengerControllerTest {
     }
 
     @Test
-    @DisplayName("Get all passengers")
-    void testGetAllPassengers() throws Exception{
-        mockMvc.perform(MockMvcRequestBuilders
+    @DisplayName("Get passengers")
+    void testGetPassenger() throws Exception{
+        mockMvc
+                .perform(MockMvcRequestBuilders
                         .get("/v1/passengers")
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.jsonPath("$", Matchers.hasSize(1)));
+
     }
 
-    @Test
-    @DisplayName("Get passenger with specific ID")
-    void testGetPassengerWithSpecificId() throws Exception{
-        mockMvc.perform(MockMvcRequestBuilders
-                        .get("/v1/passengers/1")
-                        .contentType(MediaType.APPLICATION_JSON))
-                .andExpect(MockMvcResultMatchers.status().isOk())
-                .andExpect(MockMvcResultMatchers.jsonPath("$.id", Matchers.is(1)))
-                .andExpect(MockMvcResultMatchers.jsonPath("$.firstName", Matchers.is("John")))
-                .andExpect(MockMvcResultMatchers.jsonPath("$.lastName", Matchers.is("Smith")));
-    }
-
-    @Test
-    @DisplayName("Update passenger")
-    void testUpdatePassenger() throws Exception{
-        Passengers passenger = service.getPassenger(1L);
-        CreatePassengerDto passengerDto = mapper.mapToCreatePassengerDto(passenger);
-        passengerDto.setLastName("Kovalsky");
-        Gson gson = new Gson();
-        String jsonContent = gson.toJson(passengerDto);
-
-        mockMvc.perform(MockMvcRequestBuilders
-                        .put("/v1/passengers")
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .characterEncoding("UTF-8")
-                        .content(jsonContent))
-                .andExpect(MockMvcResultMatchers.status().isOk());
-
-        mockMvc.perform(MockMvcRequestBuilders
-                        .get("/v1/passengers/1")
-                        .contentType(MediaType.APPLICATION_JSON))
-                .andExpect(MockMvcResultMatchers.status().isOk())
-                .andExpect(MockMvcResultMatchers.jsonPath("$.id", Matchers.is(1)))
-                .andExpect(MockMvcResultMatchers.jsonPath("$.firstName", Matchers.is("John")))
-                .andExpect(MockMvcResultMatchers.jsonPath("$.lastName", Matchers.is("Kovalsky")));
-    }
-*/
 
 }

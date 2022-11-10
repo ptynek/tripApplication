@@ -11,6 +11,7 @@ import java.util.Optional;
 @Repository
 public interface WeatherCodeRepository extends CrudRepository <WeatherCode, Long> {
 
+
     WeatherCode findByWeatherCode(final int weatherCode);
 
     @Override
