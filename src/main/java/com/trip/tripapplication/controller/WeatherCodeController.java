@@ -2,9 +2,7 @@ package com.trip.tripapplication.controller;
 
 import com.trip.tripapplication.domain.WeatherCode;
 import com.trip.tripapplication.domain.dto.WeatherCodeDto;
-import com.trip.tripapplication.exceptions.WeatherCodeException;
 import com.trip.tripapplication.mapper.WeatherCodeMapper;
-import com.trip.tripapplication.repository.WeatherCodeRepository;
 import com.trip.tripapplication.service.WeatherCodeDbService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;

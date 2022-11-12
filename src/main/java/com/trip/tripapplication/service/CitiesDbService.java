@@ -27,7 +27,7 @@ public class CitiesDbService {
         return repository.save(cities);
     }
 
-    public List<Cities> getCiyByName(final String name){
+    public Cities getCiyByName(final String name){
         return repository.findByCity(name);
     }
 

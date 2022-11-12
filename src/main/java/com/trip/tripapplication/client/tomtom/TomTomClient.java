@@ -4,14 +4,12 @@ import com.trip.tripapplication.client.tomtom.dto.TomTomMain;
 import com.trip.tripapplication.domain.dto.CitiesDto;
 import com.trip.tripapplication.domain.dto.RouteDto;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
 @RequiredArgsConstructor
 @Component
-@Slf4j
 public class TomTomClient {
 
     private final RestTemplate restTemplate;

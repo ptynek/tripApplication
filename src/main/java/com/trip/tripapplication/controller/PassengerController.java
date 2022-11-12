@@ -25,17 +25,20 @@ public class PassengerController {
 
     @GetMapping
     public ResponseEntity<List<PassengersDto>> getPassengers(){
+        log.info("Get all passengers");
         List<Passengers> passengers = service.getAllPassengers();
         return ResponseEntity.ok(mapper.mapToPassengersDtoList(passengers));
     }
 
     @GetMapping(value = "{passengerId}")
     public ResponseEntity<PassengersDto> getPassenger(@PathVariable long passengerId) throws PassengersException{
+        log.info("Get passenger: " + passengerId);
         return ResponseEntity.ok(mapper.mapToPassengersDto(service.getPassenger(passengerId)));
     }
 
     @PutMapping
     public ResponseEntity<PassengersDto> updatePassenger(@RequestBody PassengersDto passengerDto){
+        log.info("Update passenger: " + passengerDto.getId());
         Passengers passenger = mapper.mapToPassengers(passengerDto);
         Passengers savedPassenger = service.savePassenger(passenger);
         return ResponseEntity.ok(mapper.mapToPassengersDto(savedPassenger));
@@ -43,16 +46,16 @@ public class PassengerController {
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Void> createPassenger(@RequestBody PassengersDto passengerDto){
+        log.info("Create passenger: " + passengerDto);
         Passengers passenger = mapper.mapToPassengers(passengerDto);
         passenger.setActive(true);
-        log.info(String.valueOf("Creating passenger: " + passenger));
         service.savePassenger(passenger);
         return ResponseEntity.ok().build();
     }
 
     @DeleteMapping(value = "{passengerId}")
     public ResponseEntity<Void> deletePassenger(@PathVariable long passengerId) throws PassengersException {
-        log.info("Deleting passenger:" + service.getPassenger(passengerId));
+        log.info("Deactivate passenger: " + passengerId);
         service.deletePassenger(passengerId);
         return ResponseEntity.ok().build();
     }

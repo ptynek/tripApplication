@@ -50,17 +50,6 @@ public class Route {
     private LocalDateTime dateOfTrip;
 
 
-    public Route(long id, long lengthInMeters, long travelTimeInSeconds, long trafiicDelayInSeconds, Cities cityFrom, Cities cityTo, Passengers passengers, LocalDateTime dateOfTrip) {
-        this.id = id;
-        this.lengthInMeters = lengthInMeters;
-        this.travelTimeInSeconds = travelTimeInSeconds;
-        this.trafiicDelayInSeconds = trafiicDelayInSeconds;
-        this.cityFrom = cityFrom;
-        this.cityTo = cityTo;
-        this.passengers = passengers;
-        this.dateOfTrip = dateOfTrip;
-    }
-
     public Route(long id, long lengthInMeters, long travelTimeInSeconds, long trafiicDelayInSeconds, Cities cityFrom, Cities cityTo) {
         this.id = id;
         this.lengthInMeters = lengthInMeters;

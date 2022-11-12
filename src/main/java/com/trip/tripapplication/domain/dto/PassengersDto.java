@@ -20,5 +20,12 @@ public class PassengersDto {
         return active;
     }
 
-
+    public PassengersDto(String firstName, String lastName, String phoneNumber, String mail, boolean active, boolean loggedIn) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.phoneNumber = phoneNumber;
+        this.mail = mail;
+        this.active = active;
+        this.loggedIn = loggedIn;
+    }
 }

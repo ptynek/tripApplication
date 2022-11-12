@@ -47,6 +47,14 @@ public class Cities {
         this.longitude = longitude;
     }
 
+    public Cities(String city, String country, double latitude, double longitude, boolean active) {
+        this.city = city;
+        this.country = country;
+        this.latitude = latitude;
+        this.longitude = longitude;
+        this.active = active;
+    }
+
     public boolean isActive() {
         return active;
     }
