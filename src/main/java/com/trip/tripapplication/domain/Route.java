@@ -1,12 +1,12 @@
 package com.trip.tripapplication.domain;
 
-import com.trip.tripapplication.mapper.PassengersMapper;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @NoArgsConstructor
@@ -48,6 +48,9 @@ public class Route {
 
     @Column(name = "DATE")
     private LocalDateTime dateOfTrip;
+
+    @Column(name = "PRICE")
+    private BigDecimal price;
 
 
     public Route(long id, long lengthInMeters, long travelTimeInSeconds, long trafiicDelayInSeconds, Cities cityFrom, Cities cityTo) {

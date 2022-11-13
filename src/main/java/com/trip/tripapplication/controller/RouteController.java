@@ -16,6 +16,7 @@ import com.trip.tripapplication.mapper.RouteMapper;
 import com.trip.tripapplication.mapper.WeatherMapper;
 import com.trip.tripapplication.repository.RouteRepository;
 import com.trip.tripapplication.service.CitiesDbService;
+import com.trip.tripapplication.service.PriceSettingsDbService;
 import com.trip.tripapplication.service.RouteDbService;
 import com.trip.tripapplication.service.WeatherDbService;
 import lombok.RequiredArgsConstructor;
@@ -25,6 +26,8 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -40,6 +43,7 @@ public class RouteController {
     private final RouteMapper routeMapper;
     private final CitiesMapper citiesMapper;
     private final WeatherDbService weatherDbService;
+    private final PriceSettingsDbService priceSettingsDbService;
 
 
     @GetMapping(params = {"idCityFrom", "idCityTo"})
@@ -76,6 +80,7 @@ public class RouteController {
                 route.setWeather(weatherDbService.getWeatherInDestinationCity(cityToDto));
                 route.setPassengers(routeDbService.getPassenger());
                 route.setDateOfTrip(dateTime);
+                route.setPrice(priceSettingsDbService.getPricePerKm().multiply(new BigDecimal(route.getLengthInMeters()/1000)).setScale(2, RoundingMode.HALF_UP));
                 routeDbService.saveRoute(route);
                 return ResponseEntity.ok().build();
             } else {

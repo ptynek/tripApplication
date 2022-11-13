@@ -41,7 +41,8 @@ public class RouteMapper {
                 citiesMapper.mapToCitiesDto(route.getCityTo()),
                 passengersMapper.mapToPassengersDto(route.getPassengers()),
                 weatherMapper.mapToWeatherDto(route.getWeather()),
-                route.getDateOfTrip()
+                route.getDateOfTrip(),
+                route.getPrice()
         );
     }
 

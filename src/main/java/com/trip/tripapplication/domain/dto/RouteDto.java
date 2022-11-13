@@ -4,6 +4,7 @@ import com.trip.tripapplication.domain.Cities;
 import com.trip.tripapplication.domain.Passengers;
 import lombok.*;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -23,12 +24,6 @@ public class RouteDto {
     private PassengersDto passengersDto;
     private WeatherDto weatherDto;
     private LocalDateTime dateOfTrip;
+    private BigDecimal price;
 
-    public RouteDto(long lengthInMeters, long travelTimeInSeconds, long traficDelayInSeconds, CitiesDto cityFrom, CitiesDto cityTo) {
-        this.lengthInMeters = lengthInMeters;
-        this.travelTimeInSeconds = travelTimeInSeconds;
-        this.traficDelayInSeconds = traficDelayInSeconds;
-        this.cityFrom = cityFrom;
-        this.cityTo = cityTo;
-    }
 }

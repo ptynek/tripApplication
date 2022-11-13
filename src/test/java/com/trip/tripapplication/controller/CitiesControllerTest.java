@@ -82,7 +82,7 @@ class CitiesControllerTest {
     @Test
     @DisplayName("Update city")
     void testUpdateCity() throws Exception {
-        CitiesDto citiesDto = new CitiesDto(1, "Wrocław", "Polska",
+        CitiesDto citiesDto = new CitiesDto(1, "Wrocław", "Poland",
                 50.66857, 17.92253, true);
         Gson gson = new Gson();
         String jsonContent = gson.toJson(citiesDto);
@@ -94,7 +94,7 @@ class CitiesControllerTest {
                         .characterEncoding("UTF-8")
                         .content(jsonContent))
                 .andExpect(MockMvcResultMatchers.status().isOk())
-                .andExpect(MockMvcResultMatchers.jsonPath("$.country", Matchers.is("Polska")));
+                .andExpect(MockMvcResultMatchers.jsonPath("$.country", Matchers.is("Poland")));
     }
 
     @Test

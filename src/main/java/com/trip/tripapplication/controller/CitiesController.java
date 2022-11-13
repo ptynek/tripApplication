@@ -44,7 +44,6 @@ public class CitiesController {
     @PutMapping
     public ResponseEntity<CitiesDto> updateCity(@RequestBody CitiesDto citiesDto){
         log.info("Update city: " + citiesDto.getCity());
-
         Cities cities = mapper.mapToCities(citiesDto);
         Cities savedCity = service.saveCity(cities);
         return ResponseEntity.ok(mapper.mapToCitiesDto(savedCity));
