@@ -2,7 +2,6 @@ package com.trip.tripapplication.service;
 
 
 import com.trip.tripapplication.domain.PriceSettings;
-import com.trip.tripapplication.domain.dto.PriceSettingsDto;
 import com.trip.tripapplication.repository.PriceSettingsRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

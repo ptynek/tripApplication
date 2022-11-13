@@ -2,7 +2,6 @@ package com.trip.tripapplication.mapper;
 
 import com.trip.tripapplication.domain.WeatherCode;
 import com.trip.tripapplication.domain.dto.WeatherCodeDto;
-import com.trip.tripapplication.domain.dto.WeatherDto;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 

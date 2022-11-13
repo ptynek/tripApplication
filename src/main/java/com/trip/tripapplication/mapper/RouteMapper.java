@@ -1,13 +1,9 @@
 package com.trip.tripapplication.mapper;
 
 import com.trip.tripapplication.domain.Route;
-import com.trip.tripapplication.domain.dto.PassengersDto;
 import com.trip.tripapplication.domain.dto.RouteDto;
-import com.trip.tripapplication.exceptions.CitiesException;
-import com.trip.tripapplication.service.CitiesDbService;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

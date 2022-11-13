@@ -1,13 +1,11 @@
 package com.trip.tripapplication.service;
 
 import com.trip.tripapplication.domain.WeatherCode;
-import com.trip.tripapplication.exceptions.WeatherCodeException;
 import com.trip.tripapplication.repository.WeatherCodeRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor

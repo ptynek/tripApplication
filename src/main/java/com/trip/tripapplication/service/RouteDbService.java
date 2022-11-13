@@ -2,10 +2,8 @@ package com.trip.tripapplication.service;
 
 import com.trip.tripapplication.domain.Passengers;
 import com.trip.tripapplication.domain.Route;
-import com.trip.tripapplication.domain.dto.PassengersDto;
 import com.trip.tripapplication.exceptions.PassengerNotActive;
 import com.trip.tripapplication.exceptions.PassengerNotLoggedIn;
-import com.trip.tripapplication.exceptions.PassengersException;
 import com.trip.tripapplication.repository.PassengersRepository;
 import com.trip.tripapplication.repository.RouteRepository;
 import lombok.Getter;
@@ -15,7 +13,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor

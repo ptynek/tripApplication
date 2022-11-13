@@ -2,7 +2,6 @@ package com.trip.tripapplication.mapper;
 
 import com.trip.tripapplication.domain.Cities;
 import com.trip.tripapplication.domain.dto.CitiesDto;
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

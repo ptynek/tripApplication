@@ -4,7 +4,6 @@ import com.trip.tripapplication.domain.Passengers;
 import com.trip.tripapplication.exceptions.PassengersException;
 import com.trip.tripapplication.repository.PassengersRepository;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

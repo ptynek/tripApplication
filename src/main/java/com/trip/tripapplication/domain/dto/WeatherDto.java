@@ -1,6 +1,5 @@
 package com.trip.tripapplication.domain.dto;
 
-import com.trip.tripapplication.domain.Cities;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
