@@ -38,7 +38,7 @@ public class CitiesController {
     @GetMapping(value = "/name", params = {"city"})
     public ResponseEntity<CitiesDto> getCityByName(@RequestParam("city") String cityName){
         log.info("Get city: " + cityName);
-        return ResponseEntity.ok(mapper.mapToCitiesDto(service.getCiyByName(cityName)));
+        return ResponseEntity.ok(mapper.mapToCitiesDto(service.getCityByName(cityName)));
     }
 
     @PutMapping

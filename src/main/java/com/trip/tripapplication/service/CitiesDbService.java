@@ -2,7 +2,6 @@ package com.trip.tripapplication.service;
 
 import com.trip.tripapplication.domain.Cities;
 import com.trip.tripapplication.exceptions.CitiesException;
-import com.trip.tripapplication.exceptions.CityNotActive;
 import com.trip.tripapplication.repository.CitiesRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -27,7 +26,7 @@ public class CitiesDbService {
         return repository.save(cities);
     }
 
-    public Cities getCiyByName(final String name){
+    public Cities getCityByName(final String name){
         return repository.findByCity(name);
     }
 
@@ -38,7 +37,7 @@ public class CitiesDbService {
         repository.save(city);
     }
 
-    public boolean checkIfCityIsActive(final Cities cityFrom, Cities cityTo) {
+    public boolean checkIfCityIsActive(final Cities cityFrom, final Cities cityTo) {
         if (cityFrom.isActive() && cityTo.isActive()){
             return true;
         } else {
