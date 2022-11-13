@@ -40,7 +40,7 @@ REST endpoints:
 To start application you must have in database weather codes and description for them. Run test in package com.trip.tripapplication.domain WeatherCodeTest and in application.properties you must enter credentials to account in mailtrap.io 
 
 # Frontend 
-Url to frontend repository: https://github.com/ptynek/TripApplicationFrontEnd/commit/020f9fd5e8bffc6b49a5049935d45a7b0c6032a6
+Url to frontend repository: https://github.com/ptynek/TripApplicationFrontEnd/tree/95bb3b391f75249a8dfff62fb36884806c645a02
 # Documentation of endpoints
 Project uses Swagger2 to provide documentation of endpoints.
 
